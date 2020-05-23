@@ -1,0 +1,50 @@
+# PHP Introduction Course - Syllabus
+
+- Introduction
+- Basic Structure and Syntax
+- Hello World
+- Comments
+- Variables
+- Data Types
+- Constants
+- Arrays
+    - Numeric Arrays
+    - Associative Arrays
+    - Multidimensional Arrays
+    - Array Count
+- String Concatenation
+- Type checking functions
+- Operators
+    - Assignment Operators
+    - Math Operators
+    - Increment/Decrement Operators
+    - Comparison Operators
+    - Logical Operators
+- If-Else Statements
+- Elseif Statements
+- Switch-Case Statement
+- Loops
+    - While
+    - Do-While
+    - For
+    - Foreach
+- Functions
+    - Body
+    - Call
+    - Arguments
+        - Typed arguments
+        - Argument default value
+    - Return Value
+- Scopes
+- Global Variables
+- Built in PHP functions
+    - Date & Time Functions
+    - String Manipulation Functions 
+    - Math Functions
+- File Inclusion
+    - include(); require()
+    - include_once(); require_once()
+- Files & I/O
+- Serialization / Deserialization
+- Working with JSON
+- Exceptions
