@@ -1,5 +1,7 @@
 # PHP Introduction Course - Syllabus
 
+## Part I - Basic PHP
+
 - Introduction
 - Basic Structure and Syntax
 - Hello World
@@ -51,3 +53,34 @@
 - Serialization / Deserialization
 - Working with JSON
 - Exceptions
+
+## Part II - Basic Web
+
+### PHP in Web
+
+- Run PHP in Web environment
+- Request & Response
+- GET & POST
+- Other Request/Server SuperGlobals
+- Session
+- Cookies
+- Templating (HTML in PHP file)
+- Form Handling
+- User Input protection
+- Password hashing
+
+### PHP & MySQL
+
+- Connect to MySQL Database
+- Select data from Database
+- Insert data into Database
+- SQL Injection protection
+
+## Part III - Final Project
+
+At the end of this course, the participant will be able to create a simple web application using PHP and MySQL
+with the following features:
+
+- User Registration
+- User Login
+- User Logout
