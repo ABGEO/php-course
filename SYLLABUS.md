@@ -12,8 +12,10 @@
     - Associative Arrays
     - Multidimensional Arrays
     - Array Count
+- Unset
 - String Concatenation
 - Type checking functions
+- Type Casting
 - Operators
     - Assignment Operators
     - Math Operators
@@ -23,6 +25,7 @@
 - If-Else Statements
 - Elseif Statements
 - Switch-Case Statement
+- Ternary Operator
 - Loops
     - While
     - Do-While
