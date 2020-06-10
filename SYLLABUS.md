@@ -1,6 +1,8 @@
-# PHP Introduction Course - Syllabus
+# PHP Course - Syllabus
 
 ## Part I - Basic PHP
+
+### Basic PHP
 
 - Introduction
 - Basic Structure and Syntax
@@ -54,7 +56,20 @@
 - Working with JSON
 - Exceptions
 
-## Part II - Basic Web
+### OOP in PHP
+
+- What is Object Oriented Programming (OOP)?
+- Classes and Objects
+- Class Fields and Methods
+- Access Modifiers
+- Encapsulation
+- Inheritance
+- Polymorphism
+- Interfaces
+
+## Part II - Basic Web with real project
+
+See project description [here](#project).
 
 ### PHP in Web
 
@@ -76,11 +91,32 @@
 - Insert data into Database
 - SQL Injection protection
 
-## Part III - Final Project
+## Part III - Improve project
 
-At the end of this course, the participant will be able to create a simple web application using PHP and MySQL
-with the following features:
+In this part, students should add some additional features to the developed blog:
+
+- Role-based permissions
+    - Blogger. May:
+        - Read all published blogs
+        - Create Blog
+        - Edit OWN Blog
+        - Delete OWN Blog
+    - Admin. May:
+        - Manage User roles
+        - Read all published blogs
+        - Create Blog
+        - Edit ANY Blog
+        - Delete ANY Blog
+
+## Project
+
+In this course, we will create a simple blog using PHP and MySQL with the following features:
 
 - User Registration
 - User Login
 - User Logout
+- Blogging (Create/Update/Delete the Blog)
+- Blog Listing
+- Single Blog page
+
+This project will provide students with practical knowledge of website development process using pure PHP, HTML and CSS.
