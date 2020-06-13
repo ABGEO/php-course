@@ -51,10 +51,7 @@
 - File Inclusion
     - include(); require()
     - include_once(); require_once()
-- Files & I/O
-- Serialization / Deserialization
 - Working with JSON
-- Exceptions
 
 ### OOP in PHP
 
