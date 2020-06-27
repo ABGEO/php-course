@@ -88,7 +88,22 @@ See project description [here](#project).
 - Insert data into Database
 - SQL Injection protection
 
-## Part III - Improve project
+## Part III - Project
+
+In this course, we will create a simple blog using PHP and MySQL with the following features:
+
+- User Registration
+- User Login
+- User Logout
+- User Profile
+- User Blogs
+- Blogging (Create/Update/Delete the Blog)
+- Blog Listing
+- Single Blog page
+
+This project will provide students with practical knowledge of website development process using pure PHP, HTML and CSS.
+
+## Part IV - Improve project
 
 In this part, students should add some additional features to the developed blog:
 
@@ -104,16 +119,3 @@ In this part, students should add some additional features to the developed blog
         - Create Blog
         - Edit ANY Blog
         - Delete ANY Blog
-
-## Project
-
-In this course, we will create a simple blog using PHP and MySQL with the following features:
-
-- User Registration
-- User Login
-- User Logout
-- Blogging (Create/Update/Delete the Blog)
-- Blog Listing
-- Single Blog page
-
-This project will provide students with practical knowledge of website development process using pure PHP, HTML and CSS.
