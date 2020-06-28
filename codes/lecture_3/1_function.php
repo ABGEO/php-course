@@ -1,6 +1,6 @@
 <?php
 
 function doSomething() {
-    echo "Some function in another file";
+    echo "Some functions in another file";
 }
 
