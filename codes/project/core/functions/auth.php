@@ -41,3 +41,17 @@ function register($username, $email, $password) {
         die($e->getMessage());
     }
 }
+
+function getUserByEmailOrUsername($value) {
+    $connection = connectToDB();
+
+    try {
+        $statement = $connection->prepare("SELECT `password` FROM user WHERE `email` = :value or `username` = :value;");
+        $statement->bindParam("value", $value);
+        $statement->execute();
+
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}

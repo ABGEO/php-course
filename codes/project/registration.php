@@ -3,7 +3,7 @@ $isFormError = false;
 $isSuccessfullyRegistered = false;
 
 if (!empty($_POST)) {
-    require_once __DIR__ . '/core/functions/registration.php';
+    require_once __DIR__ . '/core/functions/auth.php';
 
     $username = htmlspecialchars($_POST['username']);
     $email = htmlspecialchars($_POST['email']);
@@ -33,6 +33,11 @@ if (!empty($_POST)) {
     <title>Registration | PHP Course</title>
 </head>
 <body>
+
+<?php require_once __DIR__ . '/includes/header.tpl.php'; ?>
+
+<br>
+<br>
 
 <form action="?" method="post">
     <label for="username">Username</label> <br>

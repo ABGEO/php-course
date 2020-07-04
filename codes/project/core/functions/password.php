@@ -6,3 +6,9 @@ function hashPassword($plainPassword) {
 
     return $password;
 }
+
+function checkPassword($plainPassword, $passwordHash) {
+    $hash = hashPassword($plainPassword);
+
+    return $hash == $passwordHash;
+}
