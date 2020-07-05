@@ -17,6 +17,20 @@ function getUserByUsername($username) {
     }
 }
 
+function getUserById($id) {
+    $connection = connectToDB();
+
+    try {
+        $statement = $connection->prepare("SELECT * FROM user WHERE `id` = :value;");
+        $statement->bindParam("value", $id);
+        $statement->execute();
+
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+
 function updateUser($firstName, $lastName, $id, $password = null) {
     $connection = connectToDB();
 
