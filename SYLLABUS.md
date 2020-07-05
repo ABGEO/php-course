@@ -107,15 +107,7 @@ This project will provide students with practical knowledge of website developme
 
 In this part, students should add some additional features to the developed blog:
 
-- Role-based permissions
-    - Blogger. May:
-        - Read all published blogs
-        - Create Blog
-        - Edit OWN Blog
-        - Delete OWN Blog
-    - Admin. May:
-        - Manage User roles
-        - Read all published blogs
-        - Create Blog
-        - Edit ANY Blog
-        - Delete ANY Blog
+- Blog comments
+    - Create comment on Blog page
+    - Edit own comment
+    - Remove own comment
