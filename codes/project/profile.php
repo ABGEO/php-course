@@ -1,5 +1,6 @@
 <?php
     require_once __DIR__ . '/core/functions/user.php';
+    require_once __DIR__ . '/core/functions/blog.php';
 
     $currentUsername = htmlspecialchars($_GET['username']);
     $currentUser = getUserByUsername($currentUsername);
@@ -7,6 +8,8 @@
     if (!$currentUser) {
         header("Location: 404.php");
     }
+
+    $avatarsDirectory = '/files/avatars/';
 ?>
 
 <!doctype html>
@@ -21,11 +24,39 @@
 <br>
 
 <div class="profile">
+    <?php if (!empty($currentUser['avatar'])): ?>
+        <img src="<?php echo "{$avatarsDirectory}{$currentUser['avatar']}" ?>"
+             alt="<?php echo $currentUser['username']; ?>'s Avatar" width="300">
+    <?php endif; ?>
+
     <p><b>First Name</b>: <?php echo $currentUser['first_name']; ?></p>
     <p><b>Last Name</b>: <?php echo $currentUser['last_name']; ?></p>
 </div>
 
 <h1>User Blogs</h1>
+<?php
+$userBlogs = getUserBlogs($currentUser['id']);
 
+if (empty($userBlogs)) {
+    echo "<h3>This user has no blogs.</h3>";
+}
+
+foreach ($userBlogs as $blog):
+    $summary = substr($blog['body'], 0, 200);
+    $summary = nl2br($summary);
+    $createdAt = new DateTime($blog['created_at']);
+    $user = getUserById($blog['author']);
+    ?>
+    <article>
+        <h1><?php echo $blog['title']; ?></h1>
+        <p><b>Date</b>: <?php echo $createdAt->format('d/m/Y H:i:s'); ?></p>
+        <a href="<?php echo "edit_blog.php?id={$blog['id']}"; ?>">Edit Blog</a> |
+        <a href="<?php echo "remove_blog.php?id={$blog['id']}"; ?>">Remove Blog</a>
+
+        <p><?php echo $summary; ?> ...</p>
+
+        <a href="<?php echo "single_blog.php?id={$blog['id']}"; ?>">Read More</a>
+    </article>
+<?php endforeach; ?>
 </body>
 </html>

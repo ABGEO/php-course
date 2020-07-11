@@ -13,7 +13,18 @@ if (!empty($_POST)) {
 
     require_once __DIR__ . '/core/functions/blog.php';
 
-    $isBlogCreatedSuccessfully = createBlog($title, $body);
+    $imagesDirectory = __DIR__ . '/files/blog_images/';
+
+    $fileNames = [];
+    if (isset($_FILES['image-1']) && $_FILES['image-1']['size'] != 0) {
+        $fileNames[] = uploadBlogImage($_FILES['image-1']);
+    }
+
+    if (isset($_FILES['image-2']) && $_FILES['image-2']['size'] != 0) {
+        $fileNames[] = uploadBlogImage($_FILES['image-2']);
+    }
+
+    $isBlogCreatedSuccessfully = createBlog($title, $body, $fileNames);
 }
 ?>
 
@@ -29,7 +40,13 @@ if (!empty($_POST)) {
 <br>
 <br>
 
-<form action="?" method="post">
+<form action="?" method="post" enctype="multipart/form-data">
+    <label for="image-1">Image 1</label> <br>
+    <input type="file" id="image-1" name="image-1"> <br><br>
+
+    <label for="image-2">Image 2</label> <br>
+    <input type="file" id="image-2" name="image-2"> <br><br>
+
     <label for="title">Title</label> <br>
     <input type="text" name="title" id="title" required> <br><br>
 

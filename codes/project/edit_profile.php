@@ -39,7 +39,20 @@ if (!empty($_POST)) {
     }
 
     if (empty($formErrorMessage)) {
-        $isUpdatedSuccessfully = updateUser($firstName, $lastName, $currentUser['id'], $passwordForUpdate);
+        $fileName = null;
+        if (isset($_FILES['avatar']) && $_FILES['avatar']['size'] != 0) {
+           $avatarsDirectory = __DIR__ . '/files/avatars/';
+           $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+           $fileName = md5($currentUser['id']) . '_' . md5(time()) . '.' . $ext;
+
+           move_uploaded_file($_FILES['avatar']['tmp_name'], $avatarsDirectory . $fileName);
+
+           if (!empty($currentUser['avatar']) && file_exists($avatarsDirectory . $currentUser['avatar'])) {
+               unlink($avatarsDirectory . $currentUser['avatar']);
+           }
+        }
+
+        $isUpdatedSuccessfully = updateUser($firstName, $lastName, $currentUser['id'], $passwordForUpdate, $fileName);
     }
 }
 ?>
@@ -55,12 +68,15 @@ if (!empty($_POST)) {
 
 <br>
 
-<form action="?" method="post">
+<form action="?" method="post" enctype="multipart/form-data">
+    <label for="avatar">Avatar</label> <br>
+    <input type="file" id="avatar" name="avatar"> <br><br>
+
     <label for="username">Username</label> <br>
     <input type="text" name="username" id="username" value="<?php echo $currentUser['username']; ?>" readonly> <br>
 
     <label for="email">E-Mail</label> <br>
-    <input type="email" name="email" id="email" value="<?php echo $currentUser['username']; ?>" readonly> <br>
+    <input type="email" name="email" id="email" value="<?php echo $currentUser['email']; ?>" readonly> <br>
 
     <label for="first-name">First Name</label> <br>
     <input type="text" name="first-name" id="first-name" value="<?php echo $currentUser['first_name']; ?>"> <br>

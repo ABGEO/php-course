@@ -15,6 +15,8 @@ $createdAt = new DateTime($blog['created_at']);
 $user = getUserById($blog['author']);
 
 $currentUsername = isset($_SESSION['username']) ? $_SESSION['username'] : null;
+$blogImages = explode("|", $blog['images']);
+$imagesDirectory = '/files/blog_images/';
 ?>
 
 <!doctype html>
@@ -36,6 +38,11 @@ $currentUsername = isset($_SESSION['username']) ? $_SESSION['username'] : null;
 
     <p><b>Author</b>: <a href="<?php echo "profile.php?username={$user['username']}"; ?>"><?php echo $user['username']; ?></a></p>
     <p><b>Date</b>: <?php echo $createdAt->format('d/m/Y H:i:s'); ?></p>
+
+    <?php foreach ($blogImages as $image): ?>
+        <img src="<?php echo "{$imagesDirectory}{$image}" ?>"
+             alt="<?php echo $blog['title']; ?>" width="300">
+    <?php endforeach; ?>
 
     <p><?php echo nl2br($blog['body']); ?></p>
 </article>

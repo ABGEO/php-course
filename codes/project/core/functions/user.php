@@ -31,15 +31,21 @@ function getUserById($id) {
     }
 }
 
-function updateUser($firstName, $lastName, $id, $password = null) {
+function updateUser($firstName, $lastName, $id, $password = null, $avatar = null) {
     $connection = connectToDB();
 
     try {
-        if (empty($password)) {
-            $query = "UPDATE user SET `first_name` = :first_name, `last_name` = :last_name WHERE id = :id;";
-        } else {
-            $query = "UPDATE user SET `first_name` = :first_name, `last_name` = :last_name, `password` = :password WHERE id = :id;";
+        $query = "UPDATE user SET `first_name` = :first_name, `last_name` = :last_name";
+
+        if (!empty($password)) {
+            $query .= ", `password` = :password";
         }
+
+        if (!empty($avatar)) {
+            $query .= ", `avatar` = :avatar";
+        }
+
+        $query .= " WHERE id = :id;";
 
         $statement = $connection->prepare($query);
         $statement->bindParam(":first_name", $firstName);
@@ -50,6 +56,10 @@ function updateUser($firstName, $lastName, $id, $password = null) {
             $password = hashPassword($password);
 
             $statement->bindParam(":password", $password);
+        }
+
+        if (!empty($avatar)) {
+            $statement->bindParam(":avatar", $avatar);
         }
 
         return $statement->execute();
