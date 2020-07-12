@@ -24,13 +24,25 @@ function createBlog($title, $body, $images) {
     }
 }
 
-function updateBlog($title, $body, $id) {
+function updateBlog($title, $body, $images, $id) {
     $connection = connectToDB();
 
     try {
-        $statement = $connection->prepare("UPDATE `blog` SET `title` = :title, `body` = :body WHERE `id` = :id");
+        $query = "UPDATE `blog` SET `title` = :title, `body` = :body";
+        if (!empty($images)) {
+            $query .= ", `images` = :images";
+        }
+        $query .= " WHERE `id` = :id;";
+
+        $statement = $connection->prepare($query);
         $statement->bindParam("title", $title);
         $statement->bindParam("body", $body);
+
+        if (!empty($images)) {
+            $images = implode("|", $images);
+            $statement->bindParam("images", $images);
+        }
+
         $statement->bindParam("id", $id);
 
         return $statement->execute();

@@ -1,7 +1,10 @@
 <?php
+    session_start();
+
     require_once __DIR__ . '/core/functions/user.php';
     require_once __DIR__ . '/core/functions/blog.php';
 
+    $loggedInUsername = isset($_SESSION['username']) ? $_SESSION['username'] : null;
     $currentUsername = htmlspecialchars($_GET['username']);
     $currentUser = getUserByUsername($currentUsername);
 
@@ -50,8 +53,10 @@ foreach ($userBlogs as $blog):
     <article>
         <h1><?php echo $blog['title']; ?></h1>
         <p><b>Date</b>: <?php echo $createdAt->format('d/m/Y H:i:s'); ?></p>
-        <a href="<?php echo "edit_blog.php?id={$blog['id']}"; ?>">Edit Blog</a> |
-        <a href="<?php echo "remove_blog.php?id={$blog['id']}"; ?>">Remove Blog</a>
+        <?php if ($user['username'] == $loggedInUsername): ?>
+            <a href="<?php echo "edit_blog.php?id={$blog['id']}"; ?>">Edit Blog</a> |
+            <a href="<?php echo "remove_blog.php?id={$blog['id']}"; ?>">Remove Blog</a>
+        <?php endif; ?>
 
         <p><?php echo $summary; ?> ...</p>
 
